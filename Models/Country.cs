@@ -12,6 +12,7 @@ namespace Spotify.Models
         Germany,
         England,
         Canada,
-        UnitedStates
+        UnitedStates,
+        Belgium
     }
 }

@@ -10,19 +10,18 @@ namespace Spotify.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Duration { get; set; }
-        public DateTime Release { get; set; }
+        public int Duration { get; set; }
+        public DateTime? Release { get; set; }
         public Album Album { get; set; }
         public List<Artist> Artists { get; set; }
         public List<Genre> GenreList { get; set; }
 
 
-        public Song(string name, string duration, DateTime release, List<Genre> genreList)
+        public Song(string name, int duration, DateTime? release)
         {
             Name = name;
             Duration = duration;
             Release = release;
-            GenreList = genreList;
         }
     }
 }

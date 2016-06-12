@@ -8,7 +8,7 @@ namespace Spotify.Models
 {
     public class Manager : Account
     {
-        public Manager(string username):base(username)
+        public Manager(string username):base()
         {
             
         }

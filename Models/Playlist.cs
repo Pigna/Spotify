@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Spotify.Models.Database;
 
 namespace Spotify.Models
 {
     public class Playlist
     {
+        DBPlaylist dbPlaylist = new DBPlaylist();
         public int ID { get; set; }
         public string Name { get; set; }
         public User Creator { get; set; }
@@ -29,13 +31,7 @@ namespace Spotify.Models
 
         public List<Song> GetSongList()
         {
-            List<Song> songlist = new List<Song>
-            {
-                new Song("song1", "1234", DateTime.Now, null),
-                new Song("song2", "1234", DateTime.Now, null),
-                new Song("song3", "1234", DateTime.Now, null),
-                new Song("song4", "1234", DateTime.Now, null)
-            };
+            List<Song> songlist = dbPlaylist.GetSongsFromPlaylist(this);
             return songlist;
         }
     }

@@ -35,7 +35,7 @@
                 Release
             </th>
         </tr>
-        @foreach (Song song in Model[ViewBag.PlaylistIndex].SongList)
+        @foreach (Song song in Model[ViewBag.PlaylistIndex].GetSongList())
         {
             <tr>
                 <td>

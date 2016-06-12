@@ -10,9 +10,8 @@ namespace Spotify.Models
     {
         public string Username { get; set; }
 
-        public Account(string username)
+        public Account()
         {
-            Username = username;
         }
     }
 }

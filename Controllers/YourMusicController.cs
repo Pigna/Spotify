@@ -4,29 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Spotify.Models;
+using Spotify.Models.Database;
 
 namespace Spotify.Controllers
 {
     public class YourMusicController : Controller
     {
-        List<Playlist> playlists = new List<Playlist>
-        {
-            new Playlist(1,"Playlist1",null),
-            new Playlist(2,"Playlist2",null),
-            new Playlist(3,"Playlist3",null),
-            new Playlist(4,"Playlist4",null)
-        };
+        DBPlaylist dbPlaylist = new DBPlaylist();
+        User LogedinUser = new User(1,"","","",DateTime.Now,Country.Netherlands,"",0,new Subscription("",0.0,""));
+        private List<Playlist> playlists = new List<Playlist>();
         // GET: YourMusic
         //List of all playlists
-        public ActionResult Index(int PlaylistId = 0)
+        public ActionResult Index(int playlistId = 1)
         {
-            if (PlaylistId == 0)
+            playlists = dbPlaylist.GetPlaylistsFromUser(LogedinUser);
+            if (playlistId == 1)
             {
-                ViewBag.PlaylistIndex = PlaylistId;
+                ViewBag.PlaylistIndex = 0;
             }
             else
             {
-                ViewBag.PlaylistIndex = GetPlaylistFromList(PlaylistId);
+                ViewBag.PlaylistIndex = GetPlaylistFromList(playlistId);
             }
             return View(playlists);
 
@@ -34,7 +32,7 @@ namespace Spotify.Controllers
 
         public ActionResult _Playlist(int PlaylistId = 0)
         {
-            Playlist playlist = playlists[PlaylistId];
+            Playlist playlist = dbPlaylist.GetPlaylistByID(PlaylistId);
             return View(playlist);
         }
         //Songs
@@ -60,7 +58,7 @@ namespace Spotify.Controllers
         private int GetPlaylistFromList(int id)
         {
             //change playlist with getmethod
-            foreach (var playlist in playlists)
+            foreach (Playlist playlist in playlists)
             {
                 if (playlist.ID == id)
                 {

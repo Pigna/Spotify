@@ -17,7 +17,19 @@ namespace Spotify.Models
         public List<User> FollowUsers { get; set; }
         public Subscription Subscription { get; set; }
         public List<Playlist> PlaylistList { get; set; }
-        public User(string username, string name, string email, string zipcode, DateTime birthdate, Country country, string iban, int phonenumber, Subscription subscription ):base(username)
+        public User(int id, string name, string email, string zipcode, DateTime birthdate, Country country, string iban, int phonenumber, Subscription subscription) : base()
+        {
+            ID = id;
+            Name = name;
+            Email = email;
+            Zipcode = zipcode;
+            Birthdate = birthdate;
+            Country = country;
+            Iban = iban;
+            Phonenumber = phonenumber;
+            Subscription = subscription;
+        }
+        public User(string name, string email, string zipcode, DateTime birthdate, Country country, string iban, int phonenumber, Subscription subscription) : base()
         {
             Name = name;
             Email = email;
