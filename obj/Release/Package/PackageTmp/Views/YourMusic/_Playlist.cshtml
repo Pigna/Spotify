@@ -1,0 +1,30 @@
+﻿@model Spotify.Models.Playlist
+<div id="playlist">
+    <table class="table">
+        <tr>
+            <th>
+                Naam
+            </th>
+            <th>
+                Duratie
+            </th>
+            <th>
+                Release
+            </th>
+        </tr>
+        @foreach (var item in Model.SongList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Release)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

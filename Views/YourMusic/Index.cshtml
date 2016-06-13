@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Playlists";
 }
-@Html.Partial("_YourMusic");
+@Html.Partial("_YourMusic")
 <h2>Playlists</h2>
 
 <!--Add new playlist-->
@@ -16,7 +16,7 @@
         @foreach (var item in Model)
         {
             <li>
-                @Html.ActionLink(item.Name, "Index", new {id = item.ID})
+                @Html.ActionLink(item.Name, "Index", new { playlistId = item.ID})
             </li>
         }
     </ul>

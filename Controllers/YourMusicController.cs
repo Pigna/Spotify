@@ -15,16 +15,18 @@ namespace Spotify.Controllers
         private List<Playlist> playlists = new List<Playlist>();
         // GET: YourMusic
         //List of all playlists
-        public ActionResult Index(int playlistId = 1)
+        public ActionResult Index(int? playlistId)
         {
             playlists = dbPlaylist.GetPlaylistsFromUser(LogedinUser);
-            if (playlistId == 1)
+            if (playlistId != null)
             {
-                ViewBag.PlaylistIndex = 0;
+                int id = Convert.ToInt32(playlistId);
+                ViewBag.PlaylistIndex = GetPlaylistFromList(id);
+                
             }
             else
             {
-                ViewBag.PlaylistIndex = GetPlaylistFromList(playlistId);
+                ViewBag.PlaylistIndex = 0;
             }
             return View(playlists);
 

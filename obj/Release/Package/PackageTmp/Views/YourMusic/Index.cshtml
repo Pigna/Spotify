@@ -1,0 +1,54 @@
+﻿@using Spotify.Models
+@model List<Spotify.Models.Playlist>
+@{
+    ViewBag.Title = "Playlists";
+}
+@Html.Partial("_YourMusic");
+<h2>Playlists</h2>
+
+<!--Add new playlist-->
+<!--List of all playlists-->
+<div id="playlists">
+    <ul>
+        <li>
+            @Html.ActionLink("Create New", "Create")
+        </li>
+        @foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(item.Name, "Index", new {id = item.ID})
+            </li>
+        }
+    </ul>
+</div>
+<!--This view displays a playlist-->
+<div id="playlist">
+    <table class="table">
+        <tr>
+            <th>
+                Naam
+            </th>
+            <th>
+                Duratie
+            </th>
+            <th>
+                Release
+            </th>
+        </tr>
+        @foreach (Song song in Model[ViewBag.PlaylistIndex].GetSongList())
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => song.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => song.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => song.Release)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<!--Html.Partial("_Playlist");-->
