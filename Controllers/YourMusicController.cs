@@ -11,6 +11,7 @@ namespace Spotify.Controllers
     public class YourMusicController : Controller
     {
         DBPlaylist dbPlaylist = new DBPlaylist();
+        DBPlaylist dbArtist = new DBPlaylist();
         User LogedinUser = new User(1,"","","",DateTime.Now,Country.Netherlands,"",0,new Subscription("",0.0,""));
         private List<Playlist> playlists = new List<Playlist>();
         // GET: YourMusic
@@ -40,11 +41,13 @@ namespace Spotify.Controllers
         //Songs
         public ActionResult Songs()
         {
+            
             return View();
         }
         //Artists
         public ActionResult Artists()
         {
+            List<Artist> = 
             return View();
         }
         //albums

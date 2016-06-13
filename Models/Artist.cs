@@ -8,13 +8,15 @@ namespace Spotify.Models
 {
     public class Artist
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
         public string Publisher { get; set; }
         public List<Song> SongList { get; set; }
-        public Artist(string name, string image, string description, string publisher)
+        public Artist(int id, string name, string image, string description, string publisher)
         {
+            ID = id;
             Name = name;
             Image = image;
             Description = description;

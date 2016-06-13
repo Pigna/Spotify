@@ -23,5 +23,12 @@ namespace Spotify.Models
             Duration = duration;
             Release = release;
         }
+        public Song(int id, string name, int duration, DateTime? release)
+        {
+            ID = id;
+            Name = name;
+            Duration = duration;
+            Release = release;
+        }
     }
 }

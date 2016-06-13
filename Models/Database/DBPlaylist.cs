@@ -95,7 +95,7 @@ namespace Spotify.Models.Database
                 string name = (dr.GetString(1));
                 int duration = (dr.GetInt32(2));
                 DateTime? release = (dr.GetDateTime(3));
-                Song newSong = new Song(name, duration, release);
+                Song newSong = new Song(id, name, duration, release);
                 ret.Add(newSong);
             }
             con.Close();

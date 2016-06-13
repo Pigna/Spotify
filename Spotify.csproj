@@ -159,10 +159,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Database\DBAccount.cs" />
+    <Compile Include="Models\Database\DBArtist.cs" />
     <Compile Include="Models\Database\DBContext.cs" />
     <Compile Include="Models\Database\DBPlaylist.cs" />
     <Compile Include="Models\Database\DBUser.cs" />
