@@ -47,5 +47,5 @@ C:\Users\Myron\documents\visual studio 2015\Projects\Spotify\Spotify\bin\EntityF
 C:\Users\Myron\documents\visual studio 2015\Projects\Spotify\Spotify\bin\EntityFramework.SqlServer.dll
 C:\Users\Myron\documents\visual studio 2015\Projects\Spotify\Spotify\bin\EntityFramework.xml
 C:\Users\Myron\documents\visual studio 2015\Projects\Spotify\Spotify\bin\EntityFramework.SqlServer.xml
-C:\Users\Myron\documents\visual studio 2015\Projects\Spotify\Spotify\obj\Debug\Spotify.csprojResolveAssemblyReference.cache
 C:\Users\Myron\documents\visual studio 2015\Projects\Spotify\Spotify\bin\MySql.Data.dll
+C:\Users\Myron\Documents\Visual Studio 2015\Projects\Spotify\Spotify\obj\Debug\Spotify.csprojResolveAssemblyReference.cache

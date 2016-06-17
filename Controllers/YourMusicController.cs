@@ -11,8 +11,9 @@ namespace Spotify.Controllers
     public class YourMusicController : Controller
     {
         DBPlaylist dbPlaylist = new DBPlaylist();
-        DBPlaylist dbArtist = new DBPlaylist();
-        User LogedinUser = new User(1,"","","",DateTime.Now,Country.Netherlands,"",0,new Subscription("",0.0,""));
+        DBArtist dbArtist = new DBArtist();
+        DBUser dbUser = new DBUser();
+        User LogedinUser = new User(1,"","","",DateTime.Now,Country.Netherlands,0,new Subscription("",0.0,""));
         private List<Playlist> playlists = new List<Playlist>();
         // GET: YourMusic
         //List of all playlists
@@ -23,7 +24,6 @@ namespace Spotify.Controllers
             {
                 int id = Convert.ToInt32(playlistId);
                 ViewBag.PlaylistIndex = GetPlaylistFromList(id);
-                
             }
             else
             {
@@ -38,27 +38,33 @@ namespace Spotify.Controllers
             Playlist playlist = dbPlaylist.GetPlaylistByID(PlaylistId);
             return View(playlist);
         }
-        //Songs
-        public ActionResult Songs()
-        {
-            
-            return View();
-        }
-        //Artists
         public ActionResult Artists()
         {
-            List<Artist> = 
-            return View();
+            List<Artist> artistlist = dbUser.GetFollowingArtists(LogedinUser);
+            return View(artistlist);
         }
         //albums
-        public ActionResult Albums()
+        public ActionResult Users()
+        {
+            List<User> userlist = dbUser.GetFollowingUsers(LogedinUser);
+            return View(userlist);
+        }
+        //Create newplaylist
+        public ActionResult NewPlaylist()
         {
             return View();
         }
-        //Create newplaylist
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult NewPlaylist(NewPlaylistModel playlist)
         {
-            throw new NotImplementedException();
+            if (dbPlaylist.NewPlaylist(playlist, LogedinUser))
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
         private int GetPlaylistFromList(int id)
         {

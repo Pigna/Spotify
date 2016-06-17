@@ -101,5 +101,24 @@ namespace Spotify.Models.Database
             con.Close();
             return ret;
         }
+
+        public bool NewPlaylist(NewPlaylistModel playlist, User user)
+        {
+            if (con.State != System.Data.ConnectionState.Open)
+            {
+                con.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand
+            {
+                Connection = con,
+                CommandText = "INSERT INTO Playlist (Name, Userid) VALUES (@name, @userid)"
+            };
+            cmd.Parameters.AddWithValue("@name", playlist.Name);
+            cmd.Parameters.AddWithValue("@userid", user.ID);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+            return true;
+        }
     }
 }

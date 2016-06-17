@@ -11,7 +11,6 @@ namespace Spotify.Models.Database
 {
     class DBUser : DBContext
     {
-        private DBUser dbUser = new DBUser();
         public User GetUserById(int id)
         {
             User ret;
@@ -34,10 +33,9 @@ namespace Spotify.Models.Database
                 string gender = (dr.GetString(4));
                 string birthday = (dr.GetString(5));
                 int country = (dr.GetInt32(6));
-                string iban = (dr.GetString(7));
                 int mobile = (dr.GetInt32(8));
                 int subscription = (dr.GetInt32(9));
-                ret = new User(id, name, email, postalcode, DateTime.Now, (Country)country, iban, mobile, new Subscription("", 0.0, ""));
+                ret = new User(id, name, email, postalcode, DateTime.Now, (Country)country, mobile, new Subscription("", 0.0, ""));
                 con.Close();
                 return ret;
             }
@@ -62,11 +60,42 @@ namespace Spotify.Models.Database
             {
                 int id = (dr.GetInt32(0));
                 string name = (dr.GetString(1));
-                string image = (dr.GetString(2));
+                //if (dr.GetValue(3) is DBNull)
+                //{
+                    //string image = "";
+                //}
+                //else
+                //{
+                    string image = (dr.GetString(2));
+                //}
                 string description = (dr.GetString(3));
                 string publisher = (dr.GetString(4));
                 Artist dbPlaylistItem = new Artist(id, name, image, description, publisher);
                 ret.Add(dbPlaylistItem);
+            }
+            con.Close();
+            return ret;
+        }
+        public List<User> GetFollowingUsers(User user) //name of ur query
+        {
+            List<User> ret = new List<User>();
+            if (con.State != System.Data.ConnectionState.Open)
+            {
+                con.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand
+            {
+                Connection = con,
+                CommandText = "SELECT id, name FROM User, FollowUser WHERE User.id = FollowUser.Userid AND FollowUser.Userid2 = @userid"
+            };
+            cmd.Parameters.AddWithValue("@userid", user.ID);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                int id = (dr.GetInt32(0));
+                string name = (dr.GetString(1));
+                User dbUserItem = new User(id, name);
+                ret.Add(dbUserItem);
             }
             con.Close();
             return ret;
@@ -90,7 +119,7 @@ namespace Spotify.Models.Database
                 int id = (dr.GetInt32(0));
                 string name = (dr.GetString(1));
                 int ownerid = (dr.GetInt32(2));
-                Playlist dbPlaylistItem = new Playlist(id, name, dbUser.GetUserById(ownerid));
+                Playlist dbPlaylistItem = new Playlist(id, name, GetUserById(ownerid));
                 ret.Add(dbPlaylistItem);
             }
             con.Close();

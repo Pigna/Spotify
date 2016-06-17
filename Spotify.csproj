@@ -193,11 +193,11 @@
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Album.cshtml" />
     <Content Include="Views\YourMusic\Index.cshtml" />
-    <Content Include="Views\YourMusic\Songs.cshtml" />
-    <Content Include="Views\YourMusic\Albums.cshtml" />
-    <Content Include="Views\YourMusic\Artists.cshtml" />
     <Content Include="Views\YourMusic\_YourMusic.cshtml" />
     <Content Include="Views\YourMusic\_Playlist.cshtml" />
+    <Content Include="Views\YourMusic\NewPlaylist.cshtml" />
+    <Content Include="Views\YourMusic\Artists.cshtml" />
+    <Content Include="Views\YourMusic\Users.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
