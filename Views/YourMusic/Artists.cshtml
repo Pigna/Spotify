@@ -5,14 +5,13 @@
 <!--Gives the menu-->
 @Html.Partial("_YourMusic")
 <h2>Playlists</h2>
-<h2>Playlists</h2>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Image)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Image)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -26,10 +25,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            <img src="@Html.DisplayFor(modelItem => item.Image)" alt="Geen afbeelding beschikbaar" height="32" width="32"/>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image)
+        @Html.ActionLink(item.Name, "Index", "Artist", new { artistId = item.ID })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

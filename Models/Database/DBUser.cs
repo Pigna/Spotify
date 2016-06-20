@@ -60,16 +60,21 @@ namespace Spotify.Models.Database
             {
                 int id = (dr.GetInt32(0));
                 string name = (dr.GetString(1));
-                //if (dr.GetValue(3) is DBNull)
-                //{
-                    //string image = "";
-                //}
-                //else
-                //{
-                    string image = (dr.GetString(2));
-                //}
-                string description = (dr.GetString(3));
-                string publisher = (dr.GetString(4));
+                string image = "";
+                if (!(dr.GetValue(2) is DBNull))
+                {
+                    image = (dr.GetString(2));
+                }
+                string description = "";
+                if (!(dr.GetValue(3) is DBNull))
+                {
+                    image = (dr.GetString(3));
+                }
+                string publisher = "";
+                if (!(dr.GetValue(4) is DBNull))
+                {
+                    image = (dr.GetString(4));
+                }
                 Artist dbPlaylistItem = new Artist(id, name, image, description, publisher);
                 ret.Add(dbPlaylistItem);
             }

@@ -1,0 +1,81 @@
+﻿@using Spotify.Models
+@model Spotify.Models.Artist
+
+<div>
+    <h4>Artist</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publisher)
+        </dd>
+
+    </dl>
+    <hr/>
+    <div id="songs">
+        <table class="table">
+            <tr>
+                <th>
+                    Naam
+                </th>
+                <th>
+                    Duratie
+                </th>
+                <th>
+                    Release
+                </th>
+                <th>
+                    Album
+                </th>
+            </tr>
+            @foreach (Song song in Model.SongList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => song.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => song.Duration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => song.Release)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => song.Album.Name)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

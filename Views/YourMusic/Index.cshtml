@@ -35,6 +35,9 @@
             <th>
                 Release
             </th>
+            <th>
+                Artist
+            </th>
         </tr>
         @foreach (Song song in Model[ViewBag.PlaylistIndex].GetSongList())
         {
@@ -47,6 +50,13 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => song.Release)
+                </td>
+                <td>
+                    
+                    @foreach(Artist artist in song.Artists)
+                    {
+                        @Html.ActionLink(artist.Name, "Index", "Artist", new {artistId = artist.ID})
+                    }
                 </td>
             </tr>
         }

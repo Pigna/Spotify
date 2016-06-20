@@ -12,6 +12,7 @@ namespace Spotify.Models.Database
     {
         private DBAccount dbAccount = new DBAccount();
         private DBUser dbUser = new DBUser();
+        private DBArtist dbArtist = new DBArtist();
         public List<Playlist> GetPlaylistsFromUser(User user) //name of ur query
         {
             List<Playlist> ret = new List<Playlist>();
@@ -96,6 +97,7 @@ namespace Spotify.Models.Database
                 int duration = (dr.GetInt32(2));
                 DateTime? release = (dr.GetDateTime(3));
                 Song newSong = new Song(id, name, duration, release);
+                newSong.Artists = dbArtist.GetArtistsFromSong(newSong);
                 ret.Add(newSong);
             }
             con.Close();
