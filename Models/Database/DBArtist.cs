@@ -126,7 +126,7 @@ namespace Spotify.Models.Database
             {
                 Connection = con,
                 CommandText =
-                    "SELECT id, artistname, image, description, Publisher FROM Artist WHERE Album.id = Song.albumid AND Song.id = Artist_Song.songid AND Artist_Song.artistid = @artistid ORDER BY Album.name"
+                    "SELECT id, artistname, image, description, Publisher FROM Artist, Artist_Song WHERE Artist_Song.artistid = Artist.id AND Artist_Song.songid = @artistid"
             };
             cmd.Parameters.AddWithValue("@artistid", song.ID);
             MySqlDataReader dr = cmd.ExecuteReader();
