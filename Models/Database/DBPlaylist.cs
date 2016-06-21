@@ -122,5 +122,50 @@ namespace Spotify.Models.Database
             con.Close();
             return true;
         }
+
+        public bool AddSongToPlaylist(Playlist playlist, Song song)
+        {
+            if (con.State != System.Data.ConnectionState.Open)
+            {
+                con.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand
+            {
+                Connection = con,
+                CommandText = "INSERT INTO Playlist_Song (Songid, Playlistid) VALUES (@songid, @playlistid)"
+            };
+            cmd.Parameters.AddWithValue("@songid", song.ID);
+            cmd.Parameters.AddWithValue("@playlistid", playlist.ID);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+            return true;
+        }
+        public bool CheckIfOwner(Playlist playlist, User user)
+        {
+            if (con.State != System.Data.ConnectionState.Open)
+            {
+                con.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand
+            {
+                Connection = con,
+                CommandText = "SELECT id FROM Playlist WHERE id = @playlistid AND Userid = @userid"
+            };
+            cmd.Parameters.AddWithValue("@userid", user.ID);
+            cmd.Parameters.AddWithValue("@playlistid", playlist.ID);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                con.Close();
+                return true;
+            }
+            else
+            {
+                con.Close();
+                return false;
+            }
+            
+        }
     }
 }
