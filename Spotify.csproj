@@ -155,6 +155,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
+    <Compile Include="Controllers\SongController.cs" />
     <Compile Include="Controllers\YourMusicController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,6 +202,7 @@
     <Content Include="Views\YourMusic\Artists.cshtml" />
     <Content Include="Views\YourMusic\Users.cshtml" />
     <Content Include="Views\Artist\Index.cshtml" />
+    <Content Include="Views\Song\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
