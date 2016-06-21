@@ -38,6 +38,9 @@
             <th>
                 Artist
             </th>
+            <th>
+                
+            </th>
         </tr>
         @foreach (Song song in Model[ViewBag.PlaylistIndex].GetSongList())
         {
@@ -52,10 +55,15 @@
                     @Html.DisplayFor(modelItem => song.Release)
                 </td>
                 <td>
-                    
-                    @foreach(Artist artist in song.Artists)
+                    @foreach (Artist artist in song.Artists)
                     {
                         @Html.ActionLink(artist.Name, "Index", "Artist", new {artistId = artist.ID})
+                    }
+                </td>
+                <td>
+                    @if (true)//Login session == owner of playlist
+                    {
+                        @Html.ActionLink("Remove from playlist", "Index", new { songId = song.ID })
                     }
                 </td>
             </tr>

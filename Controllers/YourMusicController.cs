@@ -13,26 +13,28 @@ namespace Spotify.Controllers
         DBPlaylist dbPlaylist = new DBPlaylist();
         DBArtist dbArtist = new DBArtist();
         DBUser dbUser = new DBUser();
+        DBSong dbSong = new DBSong();
         User LogedinUser = new User(1,"","","",DateTime.Now,Country.Netherlands,0,new Subscription("",0.0,""));
         private List<Playlist> playlists = new List<Playlist>();
         // GET: YourMusic
         //List of all playlists
-        public ActionResult Index(int? playlistId)
+        public ActionResult Index(int? playlistId, int? songId)
         {
             playlists = dbPlaylist.GetPlaylistsFromUser(LogedinUser);
             if (playlistId != null)
             {
-                int id = Convert.ToInt32(playlistId);
-                ViewBag.PlaylistIndex = GetPlaylistFromList(id);
+                ViewBag.PlaylistIndex = GetPlaylistFromList(Convert.ToInt32(playlistId));
+                if (songId != null)
+                {
+                    dbPlaylist.RemoveSongFromPlaylist(playlists[ViewBag.PlaylistIndex], dbSong.GetSongById(Convert.ToInt32(songId)));
+                }
             }
             else
             {
                 ViewBag.PlaylistIndex = 0;
             }
             return View(playlists);
-
         }
-
         public ActionResult _Playlist(int PlaylistId = 0)
         {
             Playlist playlist = dbPlaylist.GetPlaylistByID(PlaylistId);

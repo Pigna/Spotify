@@ -168,6 +168,7 @@
     <Compile Include="Models\Database\DBArtist.cs" />
     <Compile Include="Models\Database\DBContext.cs" />
     <Compile Include="Models\Database\DBPlaylist.cs" />
+    <Compile Include="Models\Database\DBSong.cs" />
     <Compile Include="Models\Database\DBUser.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Manager.cs" />
