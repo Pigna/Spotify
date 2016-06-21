@@ -32,7 +32,7 @@
         <td>
             @foreach (Artist artist in item.Artists)
             {
-                @Html.ActionLink(artist.Name, "Index", "Artist", new { artistId = artist.ID })
+                @Html.ActionLink(artist.Name, "Index", "Artist", new { area = "", artistId = artist.ID },null)
             }
         </td>
         <td>

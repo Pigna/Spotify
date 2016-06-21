@@ -21,13 +21,13 @@ namespace Spotify.Controllers
         public ActionResult Index(int? playlistId, int? songId)
         {
             playlists = dbPlaylist.GetPlaylistsFromUser(LogedinUser);
+            if (songId != null)
+            {
+                dbPlaylist.RemoveSongFromPlaylist(playlists[ViewBag.PlaylistIndex], dbSong.GetSongById(Convert.ToInt32(songId)));
+            }
             if (playlistId != null)
             {
                 ViewBag.PlaylistIndex = GetPlaylistFromList(Convert.ToInt32(playlistId));
-                if (songId != null)
-                {
-                    dbPlaylist.RemoveSongFromPlaylist(playlists[ViewBag.PlaylistIndex], dbSong.GetSongById(Convert.ToInt32(songId)));
-                }
             }
             else
             {

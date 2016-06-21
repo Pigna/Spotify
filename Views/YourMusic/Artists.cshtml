@@ -28,7 +28,7 @@
             <img src="@Html.DisplayFor(modelItem => item.Image)" alt="Geen afbeelding beschikbaar" height="32" width="32"/>
         </td>
         <td>
-        @Html.ActionLink(item.Name, "Index", "Artist", new { artistId = item.ID })
+        @Html.ActionLink(item.Name, "Index", "Artist", new { area = "", artistId = item.ID },null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

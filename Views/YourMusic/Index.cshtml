@@ -57,7 +57,7 @@
                 <td>
                     @foreach (Artist artist in song.Artists)
                     {
-                        @Html.ActionLink(artist.Name, "Index", "Artist", new {artistId = artist.ID})
+                        @Html.ActionLink(artist.Name, "Index", "Artist", new {artistId = artist.ID},null)
                     }
                 </td>
                 <td>

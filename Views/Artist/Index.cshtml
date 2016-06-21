@@ -1,8 +1,11 @@
 ﻿@using Spotify.Models
 @model Spotify.Models.Artist
-
+@{
+    ViewBag.Title = "Artist " + Model.Name;
+}
+<h2>Artist</h2>
 <div>
-    <h4>Artist</h4>
+    <h4>@Model.Name</h4>
     <hr/>
     <dl class="dl-horizontal">
         <dt>
@@ -75,7 +78,3 @@
         </table>
     </div>
 </div>
-
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>

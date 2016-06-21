@@ -15,7 +15,7 @@ namespace Spotify.Controllers
         // GET: Song
         public ActionResult Index(int? start)
         {
-            if (start == null)
+            if (start == null || start < 0)
             {
                 start = 0;
             }
