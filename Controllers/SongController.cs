@@ -19,6 +19,7 @@ namespace Spotify.Controllers
             {
                 start = 0;
             }
+            ViewBag.AllSongStart = start;
             List<Song> SongList = dbSong.GetAllSongs(Convert.ToInt32(start));
             return View(SongList);
         }
