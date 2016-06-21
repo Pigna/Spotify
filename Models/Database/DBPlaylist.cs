@@ -141,6 +141,24 @@ namespace Spotify.Models.Database
             con.Close();
             return true;
         }
+        public bool RemoveSongFromPlaylist(Playlist playlist, Song song)
+        {
+            if (con.State != System.Data.ConnectionState.Open)
+            {
+                con.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand
+            {
+                Connection = con,
+                CommandText = "DELETE FROM Playlist_Song WHERE Songid = @songid AND Playlistid = @playlistid"
+            };
+            cmd.Parameters.AddWithValue("@songid", song.ID);
+            cmd.Parameters.AddWithValue("@playlistid", playlist.ID);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+            return true;
+        }
         public bool CheckIfOwner(Playlist playlist, User user)
         {
             if (con.State != System.Data.ConnectionState.Open)
