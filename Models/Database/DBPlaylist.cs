@@ -74,7 +74,7 @@ namespace Spotify.Models.Database
             };
             query.Parameters.AddWithValue("@name", name);
             query.Parameters.AddWithValue("@userid", user.ID);
-            return false;
+            return true;
         }
         public List<Song> GetSongsFromPlaylist(Playlist playlist) //name of ur query
         {

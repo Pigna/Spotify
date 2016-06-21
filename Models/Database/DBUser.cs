@@ -31,7 +31,7 @@ namespace Spotify.Models.Database
                 string email = (dr.GetString(2));
                 string postalcode = (dr.GetString(3));
                 string gender = (dr.GetString(4));
-                string birthday = (dr.GetString(5));
+                DateTime birthday = (dr.GetDateTime(5));
                 int country = (dr.GetInt32(6));
                 int mobile = (dr.GetInt32(8));
                 int subscription = (dr.GetInt32(9));
